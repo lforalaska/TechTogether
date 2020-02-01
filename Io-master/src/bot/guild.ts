@@ -129,7 +129,7 @@ export default class Guild {
     })
   }
 
-  handleMessage(message: string): void {
-    this.skillHandler.handleMessage(message, this.voiceConnection)
+  handleMessage(message: string): string {
+    return this.skillHandler.handleMessage(message, this.voiceConnection)
   }
 }

@@ -27,10 +27,11 @@ export default class Bot {
   handleMessage(msg: Eris.Message) {
     let { channel } = msg
     if (channel.type !== Discord.GuildTextChannelType.TEXT) {
-      return
+     return
     }
     channel = channel as Eris.TextChannel
-    this.guildMap[channel.guild.id].handleMessage(msg.content)
+    let reply = this.guildMap[channel.guild.id].handleMessage(msg.content)
+    channel.createMessage(reply)
   }
 
   /**
