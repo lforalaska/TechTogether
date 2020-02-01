@@ -1,0 +1,52 @@
+{
+    "name": "io",
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "Midgame's Discord Bot",
+    "author": "Midgame",
+    "main": "./dist/index.js",
+    "scripts": {
+        "build": "tsc --build",
+        "lint": "eslint . --ext .ts --fix",
+        "start": "tsc --build && node ./dist/start.js",
+        "test": "tsc --build && node_modules/mocha/bin/mocha -r ts-node/register src/**/*.spec.ts",
+        "watch": "nodemon --watch ./src -e ts --exec \"yarn run lint && yarn run start\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Midgame/Navi"
+    },
+    "dependencies": {
+        "@google-cloud/speech": "^3.5.4",
+        "@types/express": "^4.17.1",
+        "@types/node": "^12.7.11",
+        "axios": "^0.19.0",
+        "cheerio": "^1.0.0-rc.3",
+        "eris": "^0.11.2",
+        "express": "~4.17.1",
+        "express-http-to-https": "^1.1.4",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.5",
+        "typescript": "~3.5.3",
+        "ytdl-core": "^1.0.7",
+        "ytsr": "^0.1.10"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.7",
+        "@types/restify": "7.2.12",
+        "@typescript-eslint/eslint-plugin": "^2.17.0",
+        "@typescript-eslint/parser": "^2.17.0",
+        "chai": "^4.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-typescript": "^6.3.1",
+        "eslint-config-prettier": "^6.9.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-prettier": "^3.1.2",
+        "mocha": "^6.2.2",
+        "nodemon": "^1.19.4",
+        "prettier": "^1.19.1",
+        "ts-mockito": "^2.5.0",
+        "ts-node": "^8.4.1",
+        "tslint": "^6.0.0"
+    }
+}

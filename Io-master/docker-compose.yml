@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: yarn run watch
+    env_file: .env
+    ports: 
+      - '${PORT}:80'
+    restart: unless-stopped
+    volumes:
+      - .:/app
