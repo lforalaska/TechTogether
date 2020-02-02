@@ -22,7 +22,8 @@ class Strengths {
             .then(res => {
             this.fromTypes = res.data.results.map(x => x.name);
             this.toTypesUrls = res.data.results.map(x => x.url);
-            this.fromTypes.map(x => this.toTypesNested[x] = []);
+            /* filter shadow and unknown since these are unused */
+            this.fromTypes.filter(x => x !== "shadow" && x !== "unknown").map(x => this.toTypesNested[x] = []);
             console.log(this.fromTypes);
         })
             .then(res => {
@@ -67,20 +68,25 @@ class Strengths {
     strength(pkmnType, channel) {
         return __awaiter(this, void 0, void 0, function* () {
             if (this.isFromType((pkmnType))) {
+                /* format reply */
                 let toTypes = this.toTypesNested[pkmnType];
+                let suffix = "";
                 console.log(toTypes);
                 if (toTypes.length >= 2) {
                     let lastElem = toTypes[toTypes.length - 1];
                     toTypes[toTypes.length - 1] = `and ${lastElem}`;
                 }
-                if (toTypes.length <= 2) {
-                    toTypes = toTypes.join(" ");
+                if (toTypes.length == 0) {
+                    suffix = "has zero matchups. Zip. Zilch";
+                }
+                else if (toTypes.length <= 2) {
+                    suffix = 'defeats ' + toTypes.join(" ");
                 }
                 else {
-                    toTypes = toTypes.join(", ");
+                    suffix = 'defeats ' + toTypes.join(", ");
                 }
                 console.log(toTypes);
-                let reply = `${pkmnType} defeats ${toTypes}.`;
+                let reply = `The ${pkmnType} type ${suffix}!`;
                 console.log(reply);
                 yield channel.createMessage(reply);
             }

@@ -150,7 +150,7 @@
         "signature": "f35bfac5bff77dbf185c9dbd6da0d59db71be09619ef3297de34bd2751908f83"
       },
       "/app/src/skills/pkmn/strengths.ts": {
-        "version": "f51afe80240769c7f0ba7ba17d0e041b1f32698529e5cc4af55f021dc383a4a2",
+        "version": "523b9ae1bff7789f132409d703f703c8845fc502ec3e27b5bd76d588710e15cc",
         "signature": "4375d8ee0d0705b90ea6a292a465f69e6124ea0414362190981805ea57ed56ff"
       },
       "/app/src/bot/skillHandler.ts": {
