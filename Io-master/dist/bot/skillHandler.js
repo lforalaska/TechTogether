@@ -7,19 +7,14 @@ const strengths_1 = __importDefault(require("../skills/pkmn/strengths"));
 class SkillHandler {
     constructor() {
         this.skillHandlers = [];
-        // this.skillHandlers.push(new MusicPlayer())
-        // this.skillHandlers.push(new DotaCounters())
         this.skillHandlers.push(new strengths_1.default());
     }
-    handleMessage(message, voiceConnection) {
-        // this.skillHandlers.forEach((handler: SkillInterface) => {
-        let handler = this.skillHandlers[0];
-        if (handler.canHandleMessage(message, voiceConnection)) {
-            return handler.handleMessage(message, voiceConnection);
-        }
-        else {
-            return '';
-        }
+    handleMessage(message, channel, voiceConnection) {
+        this.skillHandlers.forEach((handler) => {
+            if (handler.canHandleMessage(message, channel, voiceConnection)) {
+                handler.handleMessage(message, channel, voiceConnection);
+            }
+        });
     }
 }
 exports.default = SkillHandler;

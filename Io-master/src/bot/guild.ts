@@ -1,3 +1,4 @@
+import Eris from 'eris'
 import Discord from './discord'
 import SkillHandler from './skillHandler'
 import Datagram from '../models/datagram'
@@ -129,7 +130,7 @@ export default class Guild {
     })
   }
 
-  handleMessage(message: string): string {
-    return this.skillHandler.handleMessage(message, this.voiceConnection)
+  handleMessage(message: string, channel: Eris.TextChannel): void {
+    return this.skillHandler.handleMessage(message, channel, this.voiceConnection)
   }
 }

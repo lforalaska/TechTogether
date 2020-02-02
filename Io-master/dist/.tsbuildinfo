@@ -142,20 +142,20 @@
         "signature": "8dc4accced15bbf4f885a6a6f8adac2a7c946d9c302740853b3ac4f385d9ee86"
       },
       "/app/src/skills/skillInterface.ts": {
-        "version": "de733996e53709faadc9facb9f1f0c5a4a165168f0cd6b15291b46bf07e7c5ba",
-        "signature": "0a25c0d4a613c6b5423f5d6975fdf7add746990734b259e490721196fec4d542"
+        "version": "41bcb068a1fbca3e5a2403df665cb2b80033de26190ecbda7a0a036526cca64e",
+        "signature": "c7d58797f6cd292218727773d06f3ee05616375dc005979d97bfb3c208944df9"
       },
       "/app/src/skills/dota/counters.ts": {
         "version": "77caea3a9ed03c97de3bfa107da8fc49412f81d589e8173a2a75c7df2b2ee7d6",
         "signature": "f35bfac5bff77dbf185c9dbd6da0d59db71be09619ef3297de34bd2751908f83"
       },
       "/app/src/skills/pkmn/strengths.ts": {
-        "version": "9744862e430e2ddccb45ea3ac5693914763a5be708768179cc489846b328e8a7",
-        "signature": "ed5327eba7439135c6d2c7f0acb47b6f866870d71a19ae4a24a9735069dd0dc6"
+        "version": "f51afe80240769c7f0ba7ba17d0e041b1f32698529e5cc4af55f021dc383a4a2",
+        "signature": "4375d8ee0d0705b90ea6a292a465f69e6124ea0414362190981805ea57ed56ff"
       },
       "/app/src/bot/skillHandler.ts": {
-        "version": "bc876396ecae938a0f68128d7368534862d401920f4c7ae5a108123ee79335fe",
-        "signature": "167e3ef907d890ef2f8b43f8b38c26790f9cbb7e9962223e1c81b51d83cefdf7"
+        "version": "9ef99ced85403db48952f953dccc8aad732744132c93ba576a1ca59e7d266205",
+        "signature": "15720e8b1e6e1d4b8aa13b0f53212ad945ddb0646da11679b82e5c767e1b260b"
       },
       "/app/src/models/datagram.ts": {
         "version": "8bba4554178fe6edf6fd2643d26e586745b7dc8c91b0ec98abc724d38a8671cf",
@@ -170,11 +170,11 @@
         "signature": "191d9dae6ae252ddf3d001a634e6d757e7127e3096020487d55b0636d6db92f2"
       },
       "/app/src/bot/guild.ts": {
-        "version": "14b5b625250bd6d18c8080781db5cea1597c2439786e880a82ff8d1120f8fb6b",
-        "signature": "fbe6f2940ac9517e3b274ed6dca0360d6933a0bd563cf5689902612542e022c9"
+        "version": "3ba5ac55658ac756ab0197d7679de744bd4549cfe8abed1e489804cb54734110",
+        "signature": "74be7d7f25197d4a4e5b307a69403d9899d6f006013504bf2ac7da0b4cba4525"
       },
       "/app/src/bot/bot.ts": {
-        "version": "a7588affc2a78090d90d21134624129d28e0d334d00300b342d19c35a39de347",
+        "version": "ed851718343658bd089314b7cefd23e7e6f41dc477aba5e2da4c92f19ce9ea45",
         "signature": "1f2db94abe1342c2bd64a60ea0571bb8e903f9abd2264e3d5282410bbdb97a58"
       },
       "/app/src/start.ts": {
@@ -686,6 +686,7 @@
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "/app/src/skills/skillInterface.ts": [
+        "/app/node_modules/eris/index.d.ts",
         "/app/src/bot/discord.ts",
         "/app/node_modules/@types/node/fs.d.ts",
         "/app/node_modules/@types/node/ts3.2/fs.d.ts",
@@ -699,12 +700,14 @@
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "/app/src/skills/pkmn/strengths.ts": [
+        "/app/node_modules/eris/index.d.ts",
         "/app/node_modules/@types/node/fs.d.ts",
         "/app/node_modules/@types/node/ts3.2/fs.d.ts",
         "/app/node_modules/@types/node/util.d.ts",
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "/app/src/bot/skillHandler.ts": [
+        "/app/node_modules/eris/index.d.ts",
         "/app/src/bot/discord.ts",
         "/app/src/skills/music.ts",
         "/app/src/skills/skillInterface.ts",
@@ -736,6 +739,7 @@
         "/app/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "/app/src/bot/guild.ts": [
+        "/app/node_modules/eris/index.d.ts",
         "/app/src/bot/discord.ts",
         "/app/src/bot/skillHandler.ts",
         "/app/src/models/datagram.ts",
@@ -1507,16 +1511,22 @@
         "/app/node_modules/@types/node/stream.d.ts"
       ],
       "/app/src/skills/skillInterface.ts": [
+        "/app/node_modules/eris/index.d.ts",
         "/app/src/bot/discord.ts"
       ],
+      "/app/src/skills/pkmn/strengths.ts": [
+        "/app/node_modules/eris/index.d.ts"
+      ],
       "/app/src/bot/skillHandler.ts": [
+        "/app/node_modules/eris/index.d.ts",
         "/app/src/bot/discord.ts"
       ],
       "/app/src/models/speaker.ts": [
         "/app/src/models/datagram.ts"
       ],
       "/app/src/bot/guild.ts": [
-        "/app/src/bot/discord.ts"
+        "/app/src/bot/discord.ts",
+        "/app/node_modules/eris/index.d.ts"
       ],
       "/app/src/bot/bot.ts": [
         "/app/node_modules/eris/index.d.ts"

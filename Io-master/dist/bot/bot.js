@@ -28,8 +28,8 @@ class Bot {
             return;
         }
         channel = channel;
-        let reply = this.guildMap[channel.guild.id].handleMessage(msg.content);
-        channel.createMessage(reply);
+        this.guildMap[channel.guild.id].handleMessage(msg.content, channel);
+        console.log('Replied to message');
     }
     /**
      * Gracefully shuts down the discord client, as opposed to forcefully cutting the connection and letting

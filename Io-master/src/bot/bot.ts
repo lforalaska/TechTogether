@@ -30,8 +30,8 @@ export default class Bot {
      return
     }
     channel = channel as Eris.TextChannel
-    let reply = this.guildMap[channel.guild.id].handleMessage(msg.content)
-    channel.createMessage(reply)
+    this.guildMap[channel.guild.id].handleMessage(msg.content, channel)
+    console.log('Replied to message')
   }
 
   /**

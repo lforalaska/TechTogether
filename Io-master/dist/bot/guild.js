@@ -110,8 +110,8 @@ class Guild {
             }
         });
     }
-    handleMessage(message) {
-        return this.skillHandler.handleMessage(message, this.voiceConnection);
+    handleMessage(message, channel) {
+        return this.skillHandler.handleMessage(message, channel, this.voiceConnection);
     }
 }
 exports.default = Guild;

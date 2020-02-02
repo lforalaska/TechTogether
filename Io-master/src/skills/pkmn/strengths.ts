@@ -1,11 +1,15 @@
-const axios = require('axios');
+import Eris from 'eris'
+
+const axios = require('axios')
 // const cheerio = require('cheerio');
 
 export default class Strengths {
 
-    private toType: string[] = []
-
     private fromTypes: Array<string> = []
+
+    private toTypesUrls: Array<string> = []
+
+    private toTypesNested: Object = {}
 
     private commandMap = {
         '!strength': this.strength.bind(this),
@@ -13,10 +17,19 @@ export default class Strengths {
 
     constructor() {
         axios.get("https://pokeapi.co/api/v2/type/")
-            .then(res => { 
-                this.fromTypes = res.data.results
-                console.log(res.data.results)
-               })
+            .then(res => {
+                this.fromTypes = res.data.results.map(x => x.name)
+                this.toTypesUrls = res.data.results.map(x => x.url)
+                this.fromTypes.map(x => this.toTypesNested[x] = [])
+                console.log(this.fromTypes)
+           })
+            .then(res => {
+                Promise.all(this.toTypesUrls.map(async (x, index) => {
+                   let res = await axios.get(x)
+                   this.toTypesNested[this.fromTypes[index]] = (res.data.damage_relations.double_damage_to.map(y => y.name))
+                   console.log(`${this.fromTypes[index]}: ${this.toTypesNested[this.fromTypes[index]]}`)
+                }))
+            })
             .catch(err => {
                 console.log(err)
             })
@@ -25,7 +38,7 @@ export default class Strengths {
     /**
      * Returns true if the message is in the command map, false otherwise
      */
-    canHandleMessage(message: string): boolean {
+    canHandleMessage(message: string, channel: Eris.TextChannel): boolean {
         const tokens = message.trim().split(' ')
         const command = tokens.shift()
         if (!command) {
@@ -34,55 +47,43 @@ export default class Strengths {
         if (!tokens.length || tokens[0] === "") { // Didn't include a query or link!
             return false
         }
-        console.log('canHandleMessage')
         console.log(tokens.join(' '))
         return !!this.commandMap[command]
     }
 
-    handleMessage(message: string): string {
+    handleMessage(message: string, channel: Eris.TextChannel): void {
         const tokens = message.split(' ')
         const command = tokens.shift()
         if (!command) {
-            return ''
+            return
         }
-        console.log('handleMessage')
         console.log(tokens.join(' '))
-        return this.commandMap[command](tokens.join(' '))
+        this.commandMap[command](tokens.join(' '), channel)
     }
 
     isFromType(fromType: string): boolean {
-        console.log('isFromType')
-        console.log(this.fromTypes.map(x => x['name']))
-        console.log(this.fromTypes.map(x => x['name']).includes(fromType))
-        return this.fromTypes.map(x => x['name']).includes(fromType)
+            console.log(this.fromTypes.some(x => x.includes(fromType)))
+        return this.fromTypes.some(x => x.includes(fromType))
     }
 
-/*
-    generateLink(hero: string): string {
-        const formmatedHero = hero.replace(/ /g, "_")
-        const link = 'https://dota2.gamepedia.com/'.concat(formmatedHero, '/Counters')
-        return link
-    }
-
-    getHTML(link: string): any {
-        axios.get(link)
-            .then((html) => {
-                console.log(cheerio('.mw-content-ltr',
-                    html).text());
-            })
-            .catch((err) => ({
-                    error: err,
-                }));
-    }
-*/
-
-    strength(pkmnType: string): string {
+    async strength(pkmnType: string, channel: Eris.TextChannel): Promise<void> {
         if (this.isFromType((pkmnType))) {
-            console.log(`${pkmnType} is a type.`)
-            return `${pkmnType} is a type.`
-        } else {
-	    return `Not a type.`
-	}
+            let toTypes = this.toTypesNested[pkmnType]
+            console.log(toTypes)
+            if (toTypes.length >= 2) {
+                let lastElem = toTypes[toTypes.length - 1]
+                toTypes[toTypes.length - 1] = `and ${lastElem}`
+            }
+            if (toTypes.length <= 2) {
+                toTypes = toTypes.join(" ")
+            } else {
+                toTypes = toTypes.join(", ")
+            }
+            console.log(toTypes)
+        let reply = `${pkmnType} defeats ${toTypes}.`
+            console.log(reply)
+            await channel.createMessage(reply)
+        }
     }
 }
 

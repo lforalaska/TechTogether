@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import Eris from 'eris';
 import Discord from './discord';
 /**
  * A thin wrapper around Discord guilds (servers). Discord refers to servers as guilds
@@ -38,5 +39,5 @@ export default class Guild {
     joinVoiceChannel(channel: Discord.VoiceChannel): void;
     processVoiceData(chunk: Buffer, userID: string, timestamp: number, sequence: number): void;
     monitorVoiceData(): void;
-    handleMessage(message: string): string;
+    handleMessage(message: string, channel: Eris.TextChannel): void;
 }
